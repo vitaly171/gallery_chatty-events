@@ -67,23 +67,20 @@ const galleryItems = [
 const galleryRef = document.querySelector(".js-gallery");
 console.log(galleryRef);
 
-// const galleryRender = document.createElement("li");
-// console.log(galleryRender);
+function galleryMarkUp() {
+  galleryItems.map((e) => {
+    const imgItem = document.createElement("li");
+    imgItem.classList.add("gallery__item");
+    const imgLink = document.createElement("a");
+    imgLink.classList.add("gallery__link");
+    const img = document.createElement("img");
+    img.classList.add("gallery__image");
 
-const galleryList = galleryItems.forEach((e) => {
-  const galleryRender = document.createElement("li");
-  galleryRender.setAttribute(`src`, `${e.preview}`);
-  console.log(e.preview);
-  console.log(e.description);
-  // return `<li src="${e.preview}" alt="${e.description}"></li>`;
-});
-
-console.log(galleryList);
-
-// function rendergallery() {
-//   galleryItems.forEach((e) => {
-//     console.log(e.preview);
-//     // return `<li src="${e.preview}" alt="${e.description}"></li>`;
-//   });
-// }
-// rendergallery();
+    img.setAttribute(`src`, `${e.preview}`);
+    img.setAttribute(`alt`, `${e.description}`);
+    galleryRef.appendChild(imgItem);
+    imgItem.appendChild(imgLink);
+    imgLink.appendChild(img);
+  });
+}
+galleryMarkUp();
